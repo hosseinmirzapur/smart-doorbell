@@ -12,6 +12,7 @@ require (
 	cloud.google.com/go/iam v0.13.0 // indirect
 	cloud.google.com/go/longrunning v0.4.1 // indirect
 	cloud.google.com/go/storage v1.30.1 // indirect
+	firebase.google.com/go v3.13.0+incompatible // indirect
 	firebase.google.com/go/v4 v4.12.1 // indirect
 	github.com/MicahParks/keyfunc v1.9.0 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
