@@ -8,7 +8,7 @@ import (
 	"github.com/hosseinmirzapur/sdb/config"
 )
 
-func notify(regTok, title, body string) (string, error) {
+func NotifyViaFirebase(regTok, title, body string) (string, error) {
 
 	app, _, _ := config.SetupFirebase()
 

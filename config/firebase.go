@@ -13,9 +13,9 @@ func SetupFirebase() (*firebase.App, context.Context, *messaging.Client) {
 
 	ctx := context.Background()
 
-	serviceAccountKeyFilePath, err := filepath.Abs("./smartdoorbell.json")
+	serviceAccountKeyFilePath, err := filepath.Abs("./firebase.json")
 	if err != nil {
-		panic("unable to load smartdoorbell.json file")
+		panic("unable to load firebase.json file")
 	}
 
 	opt := option.WithCredentialsFile(serviceAccountKeyFilePath)
