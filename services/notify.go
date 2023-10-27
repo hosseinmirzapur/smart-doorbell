@@ -2,25 +2,13 @@ package services
 
 import (
 	"context"
-	"errors"
 	"log"
 
+	"firebase.google.com/go/messaging"
 	"github.com/hosseinmirzapur/sdb/config"
 )
 
-func validateEvent(event string) error {
-	valid_events := []string{"ENTER", "LEAVE", "RING"}
-
-	for _, valid_event := range valid_events {
-		if event == valid_event {
-			return nil
-		}
-	}
-	return errors.New("invalid event")
-
-}
-
-func notify(mobile, event string) error {
+func notify(regTok, title, body string) (string, error) {
 
 	app, _, _ := config.SetupFirebase()
 
@@ -28,10 +16,15 @@ func notify(mobile, event string) error {
 
 	client, err := app.Messaging(ctx)
 	if err != nil {
-		log.Fatalf("error getting Messaging client: %v\n", err)
+		log.Fatalf("error getting messaging client: %v\n", err)
 	}
 
-	panic(client) // todo: delete this line and implement the real code
+	return client.Send(ctx, &messaging.Message{
+		Token: regTok,
+		Data: map[string]string{
+			"title": title,
+			"body":  body,
+		},
+	})
 
-	return validateEvent(event)
 }
